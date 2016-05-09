@@ -27,9 +27,11 @@
   (into {} (filter (fn [[k v]] (>= v 0))) m))
 
 (defn find-neighbors [graph node]
+  "Retrieves all neighbors for a given node in the graph"
   (node (:adj graph)))
 
 (defn suggestion-list [graph nodes]
+  "Generates a list of suggestions given a base set of nodes"
   (let [neighbors (mapcat (partial find-neighbors graph) nodes)
         no-fly    (incompatible neighbors)]
     (->> neighbors
@@ -51,9 +53,11 @@
   (into {} (map #((juxt k identity) %) coll)))
 
 (defn index-nodes [nodeset]
+  "Adds an index field to each node in a collection for use with D3"
   (key-by-field :name (map-indexed (fn [i d] {:index i :name d}) nodeset)))
 
 (defn link [node-index adj d1 d2]
+  "Defines a link between two nodes"
   (let [source (:index (d1 node-index))
         target (:index (d2 node-index))
         value (->> adj d1 d2)]

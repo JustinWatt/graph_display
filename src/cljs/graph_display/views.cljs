@@ -71,7 +71,6 @@
             (links (.-links d3data))
             start)
 
-
         (.. node
             (append "image")
             (attr "xlink:href", "https://github.com/favicon.ico")
@@ -80,8 +79,6 @@
             (attr "width" 16)
             (attr "height" 16))
 
-        (js/console.log d3data)
-
         (.. node
             (append "text")
             (attr "dx" 12)
@@ -89,6 +86,7 @@
             (text (fn [d]
                     (js/console.log d)
                     (.-name d))))
+
         (.. force
             (on "tick" (fn []
                          (.. link
@@ -99,7 +97,6 @@
                          (.. node
                              (attr "cx" (fn [d] (.-x d)))
                              (attr "cy" (fn [d] (.-y d)))))))))
-
     :component-did-update (fn [this]
                             (js/console.log "sup"))}))
 
