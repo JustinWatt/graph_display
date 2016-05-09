@@ -19,3 +19,8 @@
  :add-to-group
  (fn [db [_ dog]]
    (update db :group conj dog)))
+
+(re-frame/register-handler
+ :remove-from-group
+ (fn [db [_ dog]]
+   (update db :group clojure.set/difference #{dog})))
