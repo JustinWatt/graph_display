@@ -3,8 +3,12 @@
 Demonstrates recommendation engine for a graph representing the relations
 between dogs at an animal shelter.
 
+Main source files:
+  src/cljs/graph_display/subs.cljs 
+  src/cljs/graph_display/views.cljs 
+
 ### Run application:
-Requires leiningen 2.5.3
+Requires leiningen >= 2.5.3
 
 ```
 lein clean
